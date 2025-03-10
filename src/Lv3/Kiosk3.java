@@ -39,12 +39,12 @@ public class Kiosk3 {
                 } else {
                     String MenuName = findMenu(select);
                     System.out.println(MenuName+"를 선택하셨습니다");
-                    totalPrice += burgers.get(select-1).getPrice(); //가격 합산하기
+                    System.out.println("총액은 "+String.format("%.1f",totalPrice)+"W"); //가격 합산하기
                     System.out.println("총액은 "+totalPrice+"W");
                     System.out.println("======================");
                 }
             } catch (IllegalArgumentException e){
-                System.out.println("error : "+e.getMessage());
+                System.out.println("error : "+e.getMessage()); //에러 뱉기
             }
 
         }

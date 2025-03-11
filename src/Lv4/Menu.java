@@ -43,6 +43,17 @@ public class Menu {
         return MenuCartegory;
     }
 
+    //카테고리에 맞는 세부 메뉴 출력하기
+    public List<MenuItem4> findDetailMenu(String MenuName){
+        if (MenuName.equals("Burgers")){
+            return getBurgers();
+        } else if (MenuName.equals("Drinks")) {
+            return getDrinks();
+        } else{
+            return getDesserts();
+        }
+    }
+
     public List<MenuItem4> getBurgers() {
         return Burgers;
     }

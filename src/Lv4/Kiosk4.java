@@ -47,12 +47,10 @@ public class Kiosk4 {
 
     //세부 메뉴 선택하기
     public void SelectMenuDetail(String menuCartegory){
-        for (int i = 0; i<menu.getBurgers().size(); i++){
-            System.out.println(menu.getBurgers().get(i).getNumbering() + ". " + menu.getBurgers().get(i).getName() + " " +
-                    menu.getBurgers().get(i).getPrice() +"W  " + menu.getBurgers().get(i).getDescription());
-        }
-        for (int i=0; i<menu.getMenuCartegory().get(menuCartegory).size(); i++){
-            System.out.println(menu.getMenuCartegory());
+        List<MenuItem4> DetailMenu = menu.findDetailMenu(menuCartegory);
+        for (int i = 0; i<DetailMenu.size(); i++){
+            System.out.println(DetailMenu.get(i).getNumbering() + ". " + DetailMenu.get(i).getName() + " " +
+                    DetailMenu.get(i).getPrice() +"W  " + DetailMenu.get(i).getDescription());
         }
 
         System.out.println("0. 뒤로가기");

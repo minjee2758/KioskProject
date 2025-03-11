@@ -1,14 +1,9 @@
-package Lv3;
+package Lv4;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-public class Main3 {
+public class Main4 {
     public static void main(String[] args) {
-        Kiosk3 kiosk = new Kiosk3();
+        Kiosk4 kiosk = new Kiosk4();
         kiosk.start();
-        kiosk.OrderByKiosk();
     }
 
 }

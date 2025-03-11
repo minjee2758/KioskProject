@@ -1,12 +1,12 @@
-package Lv3;
+package Lv4;
 
-public class MenuItem3 {
+public class MenuItem4 {
     private final int numbering;
     private final String name;
     private final double price;
     private final String description;
 
-    public MenuItem3(int numbering,String name, double price, String description){
+    public MenuItem4(int numbering, String name, double price, String description){
         this.numbering = numbering;
         this.name = name;
         this.price = price;

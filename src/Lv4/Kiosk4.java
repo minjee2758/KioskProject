@@ -16,9 +16,10 @@ public class Kiosk4 {
         SelectMenuCartegory();
     }
 
-    //메인메뉴 고르기
+    //카테고리 고르기
     public void SelectMenuCartegory(){
         while (true){
+            System.out.println("================[ MAIN MENU ]================");
             int i=1;
             for (String s : category) {
                 System.out.println(i +". "+s);
@@ -36,7 +37,7 @@ public class Kiosk4 {
                     String menuCartegory = findMenuCartegory(select);
                     System.out.println("> "+ menuCartegory+"를 선택하셨습니다 <");
                     System.out.println();
-                    System.out.println("=================== [ "+menuCartegory+" ] ===================");
+                    System.out.println("[ "+menuCartegory+" ]");
                     SelectMenuDetail(menuCartegory); //세부 메뉴로 넘어가기
                 }
             } catch (IllegalArgumentException e){
@@ -48,11 +49,10 @@ public class Kiosk4 {
     //세부 메뉴 선택하기
     public void SelectMenuDetail(String menuCartegory){
         List<MenuItem4> DetailMenu = menu.findDetailMenu(menuCartegory);
-        for (int i = 0; i<DetailMenu.size(); i++){
-            System.out.println(DetailMenu.get(i).getNumbering() + ". " + DetailMenu.get(i).getName() + " " +
-                    DetailMenu.get(i).getPrice() +"W  " + DetailMenu.get(i).getDescription());
+        for (MenuItem4 detailMenu : DetailMenu) {
+            System.out.println(detailMenu.getNumbering() + ". " + detailMenu.getName() + " " +
+                    detailMenu.getPrice() + "W  " + detailMenu.getDescription());
         }
-
         System.out.println("0. 뒤로가기");
         System.out.println("---------------------------------------------------");
 
@@ -61,9 +61,9 @@ public class Kiosk4 {
             int select = scanner.nextInt();
             try {
                 if (select == 0){
-                    System.out.println("뒤로 가기");
+                    System.out.println("카테고리 선택창으로 돌아갑니다");
                 } else {
-                    String MenuName = findMenu(select);
+                    String MenuName = findMenu(DetailMenu, select);
                     System.out.println("> "+MenuName+"를 선택하셨습니다 <");
                     System.out.println();
                 }
@@ -90,12 +90,12 @@ public class Kiosk4 {
     }
 
     //메뉴명 찾기
-    public String findMenu(int select) {
-        if (select <0 || select >menu.getBurgers().size()){
+    public String findMenu(List<MenuItem4> DetailMenu,int select) {
+        if (select <0 || select >DetailMenu.size()){
             //번호 잘못 입력했을때 에러 던져주기
             throw new IllegalArgumentException(select+"번째 메뉴는 존재하지 않습니다");
         }
-        return menu.getBurgers().get(select-1).getName();
+        return DetailMenu.get(select-1).getName();
     }
 
 }

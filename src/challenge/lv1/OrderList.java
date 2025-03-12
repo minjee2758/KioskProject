@@ -1,4 +1,4 @@
-package Challenge.Lv1;
+package challenge.lv1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,6 @@ import java.util.List;
 public class OrderList {
     private final List<MenuItemCh1> orderList = new ArrayList<>(); //장바구니 리스트
     private double totalPrice = 0; //총액 변수
-
-
 
     //선택한 메뉴 담기 + 가격 더하기
     public void AddOrderList(String name, double price, String description){

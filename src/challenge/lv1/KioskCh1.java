@@ -1,4 +1,4 @@
-package Challenge.Lv1;
+package challenge.lv1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ public class KioskCh1 {
     Scanner scanner = new Scanner(System.in); //스캐너 불러오기
     MenuCh1 menu = new MenuCh1();
     List<String> category = new ArrayList<>(menu.getMenuCategory().keySet());
-    OrderList orderList = new OrderList();
+    OrderList orderList = new OrderList(); //장바구니 클래스 불러오기
 
     //키오스크 실행하기
     public void start(){
@@ -27,7 +27,7 @@ public class KioskCh1 {
             System.out.println("0. 키오스크 종료");
 
             //장바구니 리스트 보여주기
-            if (orderList.getOrderList().size()>0) {
+            if (!orderList.getOrderList().isEmpty()) {
                 System.out.println("[ Order Menu ]");
                 System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.\n"
                     + "5. Cancel       | 진행중인 주문을 취소합니다.");
@@ -37,7 +37,7 @@ public class KioskCh1 {
             System.out.print("→ 원하는 번호를 입력하세요 : ");
             int select = scanner.nextInt();
             try {
-                if (orderList.getOrderList().size()==0){
+                if (orderList.getOrderList().isEmpty()){
                     if (select == 0){
                         System.out.println("::::::::::::::::::::::::::::::::::::::::::::::");
                         System.out.println("프로그램을 종료합니다.");

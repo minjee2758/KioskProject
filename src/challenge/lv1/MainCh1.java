@@ -1,4 +1,4 @@
-package Challenge.Lv1;
+package challenge.lv1;
 
 public class MainCh1 {
     public static void main(String[] args) {

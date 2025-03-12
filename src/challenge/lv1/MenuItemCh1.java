@@ -1,23 +1,17 @@
-package Lv4Lv5;
+package challenge.lv1;
 
-public class MenuItem4 {
-    private final int numbering;
+public class MenuItemCh1 {
     private final String name;
     private final double price;
     private final String description;
 
-    public MenuItem4(int numbering, String name, double price, String description){
-        this.numbering = numbering;
+    public MenuItemCh1(String name, double price, String description){
         this.name = name;
         this.price = price;
         this.description = description;
     }
 
     //getter
-    //메뉴 번호 가져오기'
-    public int getNumbering(){
-        return numbering;
-    }
     //햄버거 이름 가져오기
     public String getName(){
         return name;

@@ -1,11 +1,11 @@
-package Challenge.Lv1;
+package lv2;
 
-public class MenuItemCh1 {
-    private final String name;
-    private final double price;
-    private final String description;
+public class MenuItem2 {
+    private String name;
+    private double price;
+    private String description;
 
-    public MenuItemCh1(String name, double price, String description){
+    public MenuItem2(String name, double price, String description){
         this.name = name;
         this.price = price;
         this.description = description;

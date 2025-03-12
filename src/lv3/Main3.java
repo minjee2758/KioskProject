@@ -1,8 +1,4 @@
-package Lv3;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+package lv3;
 
 public class Main3 {
     public static void main(String[] args) {

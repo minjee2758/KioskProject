@@ -8,16 +8,16 @@ public class Kiosk4 {
     static private double totalPrice =0; //총액을 저장
     Scanner scanner = new Scanner(System.in); //스캐너 불러오기
     Menu menu = new Menu();
-    List<String> category = new ArrayList<>(menu.getMenuCartegory().keySet());
+    List<String> category = new ArrayList<>(menu.getMenuCategory().keySet());
 
     //키오스크 실행하기
     public void start(){
         System.out.println("햄버거 키오스크를 시작합니다!");
-        SelectMenuCartegory();
+        SelectMenuCategory();
     }
 
     //카테고리 고르기
-    public void SelectMenuCartegory(){
+    public void SelectMenuCategory(){
         while (true){
             System.out.println("================[ MAIN MENU ]================");
             int i=1;
@@ -32,13 +32,14 @@ public class Kiosk4 {
             try {
                 if (select == 0){
                     System.out.println("프로그램을 종료합니다.");
+                    System.out.println("담은 메뉴의 가격 : " + totalPrice);
                     break;
                 } else {
-                    String menuCartegory = findMenuCartegory(select);
-                    System.out.println("> "+ menuCartegory+"를 선택하셨습니다 <");
+                    String menuCategory = findMenuCategory(select);
+                    System.out.println("> "+ menuCategory+"를 선택하셨습니다 <");
                     System.out.println();
-                    System.out.println("[ "+menuCartegory+" ]");
-                    SelectMenuDetail(menuCartegory); //세부 메뉴로 넘어가기
+                    System.out.println("[ "+menuCategory+" ]");
+                    SelectMenuDetail(menuCategory); //세부 메뉴로 넘어가기
                 }
             } catch (IllegalArgumentException e){
                 System.out.println("error : "+e.getMessage()); //에러 뱉기
@@ -47,8 +48,8 @@ public class Kiosk4 {
     }
 
     //세부 메뉴 선택하기
-    public void SelectMenuDetail(String menuCartegory){
-        List<MenuItem4> DetailMenu = menu.findDetailMenu(menuCartegory);
+    public void SelectMenuDetail(String menuCategory){
+        List<MenuItem4> DetailMenu = menu.findDetailMenu(menuCategory);
         for (MenuItem4 detailMenu : DetailMenu) {
             System.out.println(detailMenu.getNumbering() + ". " + detailMenu.getName() + " " +
                     detailMenu.getPrice() + "W  " + detailMenu.getDescription());
@@ -65,6 +66,7 @@ public class Kiosk4 {
                 } else {
                     String MenuName = findMenu(DetailMenu, select);
                     System.out.println("> "+MenuName+"를 선택하셨습니다 <");
+                    totalPrice += DetailMenu.get(select-1).getPrice(); //가격 합산하기
                     System.out.println();
                 }
             } catch (IllegalArgumentException e){
@@ -80,7 +82,7 @@ public class Kiosk4 {
     }
 
     //카테고리명 찾기
-    public String findMenuCartegory(int select){
+    public String findMenuCategory(int select){
         for (String s : category) {
             if (category.get(select-1).equals(s)){
                 return s;

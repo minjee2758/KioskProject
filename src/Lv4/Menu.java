@@ -6,8 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Menu {
-    //HashMap 이용해서 MenuCartegory 리스트에 다 넣기 - 카테고리로 활용하자
-    private final HashMap<String, List<MenuItem4>> MenuCartegory = new LinkedHashMap<>();
+    //HashMap 이용해서 MenuCategory 리스트에 다 넣기 - 카테고리로 활용하자
+    private final HashMap<String, List<MenuItem4>> MenuCategory = new LinkedHashMap<>();
     //햄버거 메뉴 리스트
     private final List<MenuItem4> Burgers = new ArrayList<>();
     //음료수 리스트
@@ -28,19 +28,14 @@ public class Menu {
         Desserts.add(new MenuItem4(1, "Dark Chocolate Cake", 5.5,"인생은 초콜릿"));
         Desserts.add(new MenuItem4(2, "Cheese Fries", 5.2, "바삭한 감자와 치즈"));
 
-        MenuCartegory.put("Burgers", Burgers);
-        MenuCartegory.put("Drinks", Drinks);
-        MenuCartegory.put("Desserts", Desserts);
+        MenuCategory.put("Burgers", Burgers);
+        MenuCategory.put("Drinks", Drinks);
+        MenuCategory.put("Desserts", Desserts);
     }
 
-    public HashMap<String, List<MenuItem4>> getMenuCartegory(){
-//        int i =1;
-//        System.out.println("=================== [ Main Menu ] ===================");
-//        for (String s : MenuCartegory.keySet()) {
-//            System.out.println(i +". "+s);
-//            i++;
-//        }
-        return MenuCartegory;
+    //카테고리 뱉기
+    public HashMap<String, List<MenuItem4>> getMenuCategory(){
+        return MenuCategory;
     }
 
     //카테고리에 맞는 세부 메뉴 출력하기
@@ -49,11 +44,14 @@ public class Menu {
             return getBurgers();
         } else if (MenuName.equals("Drinks")) {
             return getDrinks();
-        } else{
+        } else if (MenuName.equals("Desserts")){
             return getDesserts();
+        } else {
+            throw new IllegalArgumentException("그런 카테고리는 없습니다.");
         }
     }
 
+    //세부 메뉴 리스트
     public List<MenuItem4> getBurgers() {
         return Burgers;
     }

@@ -1,4 +1,4 @@
-package Lv4;
+package Lv4Lv5;
 
 public class Main4 {
     public static void main(String[] args) {

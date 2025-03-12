@@ -1,12 +1,12 @@
-package Lv4;
+package Challenge.Lv1;
 
-public class MenuItem4 {
+public class MenuItemCh1 {
     private final int numbering;
     private final String name;
     private final double price;
     private final String description;
 
-    public MenuItem4(int numbering, String name, double price, String description){
+    public MenuItemCh1(int numbering, String name, double price, String description){
         this.numbering = numbering;
         this.name = name;
         this.price = price;

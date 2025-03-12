@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class KioskCh1 {
-    private double totalPrice =0; //총액을 저장
     Scanner scanner = new Scanner(System.in); //스캐너 불러오기
     MenuCh1 menu = new MenuCh1();
     List<String> category = new ArrayList<>(menu.getMenuCategory().keySet());
@@ -32,7 +31,6 @@ public class KioskCh1 {
                 if (select == 0){
                     System.out.println("::::::::::::::::::::::::::::::::::::::::::::::");
                     System.out.println("프로그램을 종료합니다.");
-                    System.out.println("담은 메뉴의 가격 : " + totalPrice +"W");
                     break;
                 } else {
                     String menuCategory = findMenuCategory(select);
@@ -67,7 +65,6 @@ public class KioskCh1 {
                 } else {
                     String MenuName = findMenu(DetailMenu, select);
                     System.out.println("> "+MenuName+"를 선택하셨습니다 <");
-                    totalPrice += DetailMenu.get(select-1).getPrice(); //가격 합산하기
                     System.out.println();
                 }
             } catch (IllegalArgumentException e){

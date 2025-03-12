@@ -22,8 +22,7 @@ public class KioskCh1 {
             System.out.println("================[ MAIN MENU ]================");
             int i=1;
             for (String s : category) {
-                System.out.println(i +". "+s);
-                i++;
+                System.out.println(i++ +". "+s);
             }
             System.out.println("0. 키오스크 종료");
             //메뉴 입력 받기
@@ -51,8 +50,9 @@ public class KioskCh1 {
     //세부 메뉴 선택하기
     public void SelectMenuDetail(String menuCategory){
         List<MenuItemCh1> DetailMenu = menu.findDetailMenu(menuCategory);
+        int i = 1;
         for (MenuItemCh1 detailMenu : DetailMenu) {
-            System.out.println(detailMenu.getNumbering() + ". " + detailMenu.getName() + " " +
+            System.out.println(i++ + ". " + detailMenu.getName() + " " +
                     detailMenu.getPrice() + "W  " + detailMenu.getDescription());
         }
         System.out.println("0. 뒤로가기");

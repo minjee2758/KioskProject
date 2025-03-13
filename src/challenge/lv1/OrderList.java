@@ -8,9 +8,9 @@ public class OrderList {
     private double totalPrice = 0; //총액 변수
 
     //선택한 메뉴 담기 + 가격 더하기
-    public void AddOrderList(String name, double price, String description){
-        orderList.add(new MenuItemCh1(name, price, description));
-        totalPrice += price;
+    public void addOrderList(MenuItemCh1 menuItemCh1){
+        orderList.add(menuItemCh1);
+        totalPrice += menuItemCh1.getPrice();
     }
 
     public List<MenuItemCh1> getOrderList(){

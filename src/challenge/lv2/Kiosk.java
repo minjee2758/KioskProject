@@ -62,8 +62,13 @@ public class Kiosk {
                         System.out.println("1. 주문      2. 메뉴판");
                         int lastSelect = scanner.nextInt();
                         if (lastSelect == 1){
-                            System.out.println("주문이 완료되었습니다. 금액은 W "+orderList.getTotalPrice()+" 입니다.");
-                            System.exit(0);
+                            try {
+                                Discount discount = new Discount();
+                                discount.discountPrice(orderList.getTotalPrice());
+                                System.exit(0);
+                            }catch (IllegalArgumentException e){
+                                System.out.println(e);
+                            }
                         } else {
                             System.out.println("다시 메뉴판으로 이동합니다");
                         }

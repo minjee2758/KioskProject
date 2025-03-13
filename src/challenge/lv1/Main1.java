@@ -1,11 +1,11 @@
 package challenge.lv1;
 
-public class MainCh1 {
+public class Main1 {
     public static void main(String[] args) {
         //메뉴 추가하기
-        MenuCh1 BurgerList = new MenuCh1("Burgers");
-        MenuCh1 DrinkList = new MenuCh1("Drinks");
-        MenuCh1 DessertList = new MenuCh1("Desserts");
+        Menu1 BurgerList = new Menu1("Burgers");
+        Menu1 DrinkList = new Menu1("Drinks");
+        Menu1 DessertList = new Menu1("Desserts");
 
         BurgerList.addMenus("ShackBurger   ", 6.9, "토마토, 양상추, 쉑 소스가 토핑된 치즈버거");
         BurgerList.addMenus("SmokeShack    ", 8.9, "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거");
@@ -21,7 +21,7 @@ public class MainCh1 {
 
 
         //키오스크의 addMenus 메서드를 통해 각 리스트를 추가해주기
-        KioskCh1 kiosk = new KioskCh1();
+        Kiosk1 kiosk = new Kiosk1();
         kiosk.addMenus(BurgerList);
         kiosk.addMenus(DrinkList);
         kiosk.addMenus(DessertList);

@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class KioskCh1 {
+public class Kiosk1 {
     Scanner scanner = new Scanner(System.in); //스캐너 불러오기
-    private final List<MenuCh1> menuCh1s;
+    private final List<Menu1> menu1;
     private final OrderList orderList = new OrderList(); //장바구니 클래스 불러오기
-    private int selectNum; //선택할 수 있는 입력 번호의 개수 (장바구니에 메뉴가 담기면 +2)
 
-
-    public KioskCh1(){
-        this.menuCh1s = new ArrayList<>();
+    public Kiosk1(){
+        this.menu1 = new ArrayList<>();
     }
 
-    public void addMenus(MenuCh1 menuCh1){
-        menuCh1s.add(menuCh1);
+    public void addMenus(Menu1 menu1){
+        this.menu1.add(menu1);
     }
 
     //키오스크 실행하기
@@ -28,12 +26,12 @@ public class KioskCh1 {
     //카테고리 고르기
     public void selectMenuCategory(){
         while (true){
-            selectNum =3;
+            int selectNum =3;
             System.out.println("================[ MAIN MENU ]================");
             int i=1;
             //메뉴 카테고리 출력
-            for (MenuCh1 menuCh1 : menuCh1s) {
-                System.out.println(i++ +". " + menuCh1.getMenuCategory());
+            for (Menu1 menu1 : menu1) {
+                System.out.println(i++ +". " + menu1.getMenuCategory());
             }
             System.out.println("0. 키오스크 종료");
 
@@ -48,6 +46,9 @@ public class KioskCh1 {
             //메뉴 입력 받기
             System.out.print("→ 원하는 번호를 입력하세요 : ");
             int select = scanner.nextInt();
+            if (select<0 || select>selectNum){
+                throw new IllegalArgumentException(select + "번은 존재하지 않습니다");
+            }
 
             //switch-case로 번호 선택 로직
             switch (select){
@@ -71,8 +72,8 @@ public class KioskCh1 {
                     orderList.clearOrderList(); //장바구니 비우기
                     break;
                 default:
-                    MenuCh1 selectCategory = menuCh1s.get(select-1); //해당하는 카테고리의 리스트 찾기
-                    System.out.println("> "+ menuCh1s.get(select-1).getMenuCategory()+"를 선택하셨습니다 <");
+                    Menu1 selectCategory = menu1.get(select-1); //해당하는 카테고리의 리스트 찾기
+                    System.out.println("> "+ menu1.get(select-1).getMenuCategory()+"를 선택하셨습니다 <");
                     System.out.println();
                     selectMenuDetail(selectCategory); //세부 메뉴로 넘어가기
             }
@@ -80,8 +81,8 @@ public class KioskCh1 {
     }
 
     //세부 메뉴 선택하기 - 리스트 받아서
-    public void selectMenuDetail(MenuCh1 menuCh1){
-        menuCh1.printDetailMenus(); //메뉴리스트 출력
+    public void selectMenuDetail(Menu1 menu1){
+        menu1.printDetailMenus(); //메뉴리스트 출력
         System.out.println("0. 뒤로가기");
         System.out.println("---------------------------------------------------");
         //메뉴 입력 받기
@@ -91,7 +92,7 @@ public class KioskCh1 {
             case 0 :
                 System.out.println("카테고리 선택창으로 돌아갑니다");
             default:
-                MenuItemCh1 DetailMenu = menuCh1.getMenuItemCh1s().get(selectMenu-1);
+                MenuItem1 DetailMenu = menu1.getMenuItemCh1s().get(selectMenu-1);
                 System.out.println(DetailMenu.getName()+"를 선택하시겠어요?");
                 System.out.println("1. 선택       2. 취소");
                 int lastSelect = scanner.nextInt();

@@ -58,19 +58,25 @@ public class Kiosk {
                         System.exit(0); //break는 switch문만 탈출
                 case 4 :
                     orderList.printOrderList();
-                        System.out.println("\n" +"[ Total ] \n" + "W " + orderList.getTotalPrice());
-                        System.out.println("1. 주문      2. 메뉴판");
+                        System.out.println("\n" +"[ Total ] \n" + "W " + String.format("%.1f",orderList.getTotalPrice()));
+                        System.out.println("1. 주문      2. 메뉴판      3. 메뉴 삭제");
                         int lastSelect = scanner.nextInt();
-                        if (lastSelect == 1){
-                            try {
+                        try {
+                            if (lastSelect == 1){
                                 Discount discount = new Discount();
                                 discount.discountPrice(orderList.getTotalPrice());
                                 System.exit(0);
-                            }catch (IllegalArgumentException e){
-                                System.out.println(e);
                             }
-                        } else {
-                            System.out.println("다시 메뉴판으로 이동합니다");
+                            else if(lastSelect==2){
+                                System.out.println("다시 메뉴판으로 이동합니다");
+                                break;
+                            } else if( lastSelect == 3){
+                                orderList.removeItem();
+                                System.out.println("다시 메뉴판으로 이동합니다");
+                                break;
+                            }
+                        }catch (IllegalArgumentException e){
+                                System.out.println(e);
                         }
                 case 5 :
                     System.out.println("주문 취소합니다");

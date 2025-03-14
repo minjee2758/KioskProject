@@ -3,9 +3,10 @@ package challenge.lv2;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class OrderList {
-    private final List<MenuItem> orderList = new ArrayList<>(); //장바구니 리스트
+    private List<MenuItem> orderList = new ArrayList<>(); //장바구니 리스트
     private double totalPrice = 0; //총액 변수
     Scanner scanner = new Scanner(System.in);
 
@@ -23,7 +24,7 @@ public class OrderList {
         System.out.println("\n[ Orders ]");
         int i=1;
         for (MenuItem ordering : orderList) { //장바구니에 있는 메뉴 리스트 출력
-             System.out.println(i++ + ". " +ordering.getName() + "  | W "+ordering.getPrice() + "  | " + ordering.getDescription());
+             System.out.println(i++ + ". " +String.format("%-15s", ordering.getName()) + "  | W "+ordering.getPrice() + "  | " + ordering.getDescription());
                 }
     }
 
@@ -46,7 +47,8 @@ public class OrderList {
             removeItem();
         } else {
             System.out.println(orderList.get(select-1).getName() +"품목을 삭제합니다");
-            orderList.remove(select);
+            orderList = orderList.stream().filter(menuItem
+                    -> !menuItem.getName().equals(orderList.get(select-1).getName())).collect(Collectors.toList());
             totalPrice-=orderList.get(select-1).getPrice();
         }
     }

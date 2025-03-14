@@ -30,7 +30,7 @@ public class Menu {
         System.out.println("[ "+category +" ]");
         for (int i = 0; i< menuItem.size(); i++){
             MenuItem menus = menuItem.get(i);
-            System.out.println(i+1 +". "+menus.getName() +" |  W "+ menus.getPrice()+" | " + menus.getDescription());
+            System.out.println(i+1 +". "+String.format("%-15s",menus.getName()) +" |  W "+ menus.getPrice()+" | " + menus.getDescription());
         }
     }
 

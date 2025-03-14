@@ -2,6 +2,7 @@ package challenge.lv2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Menu {
     private final String category;
@@ -28,10 +29,12 @@ public class Menu {
     }
     public void printDetailMenus(){
         System.out.println("[ "+category +" ]");
-        for (int i = 0; i< menuItem.size(); i++){
-            MenuItem menus = menuItem.get(i);
-            System.out.println(i+1 +". "+String.format("%-15s",menus.getName()) +" |  W "+ menus.getPrice()+" | " + menus.getDescription());
-        }
+        AtomicInteger i = new AtomicInteger(1);
+//        for (int i = 0; i< menuItem.size(); i++){
+//            MenuItem menus = menuItem.get(i);
+//            System.out.println(i+1 +". "+String.format("%-15s",menus.getName()) +" |  W "+ menus.getPrice()+" | " + menus.getDescription());
+//        }
+        menuItem.forEach(menus -> System.out.println(i.getAndIncrement() + ". "+ String.format("%-15s",menus.getName()) +" |  W "+ menus.getPrice()+" | " + menus.getDescription()));
     }
 
 }

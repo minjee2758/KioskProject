@@ -3,6 +3,7 @@ package challenge.lv2;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Kiosk {
     Scanner scanner = new Scanner(System.in); //스캐너 불러오기
@@ -28,11 +29,12 @@ public class Kiosk {
         while (true){
             int selectNum =3;
             System.out.println("================[ MAIN MENU ]================");
-            int i=1;
+            AtomicInteger i = new AtomicInteger(1);
             //메뉴 카테고리 출력
-            for (Menu menu : this.menu) {
-                System.out.println(i++ +". " + menu.getMenuCategory());
-            }
+//            for (Menu menu : this.menu) {
+//                System.out.println(i++ +". " + menu.getMenuCategory());
+//            }
+            menu.forEach(menus -> System.out.println(i.getAndIncrement() + ". "+ menus.getMenuCategory()));
             System.out.println("0. 키오스크 종료");
 
             //장바구니 리스트 보여주기

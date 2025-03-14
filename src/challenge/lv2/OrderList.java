@@ -3,6 +3,7 @@ package challenge.lv2;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class OrderList {
@@ -22,10 +23,12 @@ public class OrderList {
 
     public void printOrderList(){
         System.out.println("\n[ Orders ]");
-        int i=1;
-        for (MenuItem ordering : orderList) { //장바구니에 있는 메뉴 리스트 출력
-             System.out.println(i++ + ". " +String.format("%-15s", ordering.getName()) + "  | W "+ordering.getPrice() + "  | " + ordering.getDescription());
-                }
+        AtomicInteger i= new AtomicInteger(1); //스트림 내부에서 인덱스를 증가시키기 위해 AtomicInteger로 정의하기
+//        for (MenuItem ordering : orderList) { //장바구니에 있는 메뉴 리스트 출력
+//             System.out.println(i++ + ". " +String.format("%-15s", ordering.getName()) + "  | W "+ordering.getPrice() + "  | " + ordering.getDescription());
+//                }
+        orderList.forEach(menu
+                -> System.out.println(i.getAndIncrement()+ ". " + String.format("%-15s", menu.getName()) + "  | W "+menu.getPrice() + "  | " + menu.getDescription()));
     }
 
     public double getTotalPrice(){

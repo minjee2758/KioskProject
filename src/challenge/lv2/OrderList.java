@@ -28,7 +28,8 @@ public class OrderList {
 //             System.out.println(i++ + ". " +String.format("%-15s", ordering.getName()) + "  | W "+ordering.getPrice() + "  | " + ordering.getDescription());
 //                }
         orderList.forEach(menu
-                -> System.out.println(i.getAndIncrement()+ ". " + String.format("%-15s", menu.getName()) + "  | W "+menu.getPrice() + "  | " + menu.getDescription()));
+                -> System.out.println(i.getAndIncrement()+
+                ". " + String.format("%-15s", menu.getName()) + "  | W "+menu.getPrice() + "  | " + menu.getDescription()));
     }
 
     public double getTotalPrice(){
@@ -50,9 +51,9 @@ public class OrderList {
             removeItem();
         } else {
             System.out.println(orderList.get(select-1).getName() +"품목을 삭제합니다");
+            totalPrice-=orderList.get(select-1).getPrice();
             orderList = orderList.stream().filter(menuItem
                     -> !menuItem.getName().equals(orderList.get(select-1).getName())).collect(Collectors.toList());
-            totalPrice-=orderList.get(select-1).getPrice();
         }
     }
 }
